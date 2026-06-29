@@ -1,0 +1,697 @@
+/*
+ * Aura News — Premium Design System
+ * Inspired by Linear, Apple, Vercel
+ * ================================================
+ * 这个文件只写 CSS，不碰任何 Vue/HTML 模板
+ * 所有 Element Plus 覆盖都通过全局选择器完成
+ */
+
+/* ============================================
+   1. Design Tokens (CSS Custom Properties)
+   ============================================ */
+
+:root {
+  /* ── 色彩体系 ── */
+  --color-bg:            #0c0e14;
+  --color-bg-elevated:   #161923;
+  --color-bg-card:       rgba(22, 25, 35, 0.72);
+  --color-bg-hover:      rgba(35, 40, 55, 0.6);
+
+  --color-text:          #fafafa;
+  --color-text-2:        #a1a1aa;
+  --color-text-3:        #71717a;
+  --color-text-4:        #52525b;
+
+  --color-border:        rgba(255, 255, 255, 0.06);
+  --color-border-hover:  rgba(255, 255, 255, 0.12);
+  --color-divider:       rgba(255, 255, 255, 0.04);
+
+  /* ── 品牌色 (偏青绿) ── */
+  --color-primary:       #14b8a6;
+  --color-primary-hover: #0d9488;
+  --color-primary-light: #5eead4;
+  --color-primary-bg:    rgba(20, 184, 166, 0.08);
+  --color-primary-glow:  rgba(20, 184, 166, 0.15);
+
+  /* ── 语义色 ── */
+  --color-success:       #22c55e;
+  --color-danger:        #ef4444;
+  --color-danger-bg:     rgba(239, 68, 68, 0.08);
+  --color-info:          #6366f1;
+
+  /* ── 阴影 (多层、极淡) ── */
+  --shadow-xs:    0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-sm:    0 1px 3px rgba(0, 0, 0, 0.24), 0 1px 2px rgba(0, 0, 0, 0.16);
+  --shadow-md:    0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -2px rgba(0, 0, 0, 0.16);
+  --shadow-lg:    0 10px 15px -3px rgba(0, 0, 0, 0.24), 0 4px 6px -4px rgba(0, 0, 0, 0.16);
+  --shadow-xl:    0 20px 25px -5px rgba(0, 0, 0, 0.28), 0 8px 10px -6px rgba(0, 0, 0, 0.16);
+  --shadow-glow:  0 0 20px rgba(20, 184, 166, 0.12);
+
+  /* ── 圆角 ── */
+  --radius-xs:    4px;
+  --radius-sm:    6px;
+  --radius-md:    10px;
+  --radius-lg:    14px;
+  --radius-xl:    20px;
+  --radius-full:  9999px;
+
+  /* ── 间距 ── */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  /* ── 字体 ── */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text',
+    'Inter', 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+    'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+
+  /* ── 过渡 ── */
+  --ease-out:  cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 120ms;
+  --duration-normal: 200ms;
+  --duration-slow: 350ms;
+}
+
+/* ============================================
+   2. Reset & Base
+   ============================================ */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: linear-gradient(160deg, #0c0e14 0%, #0f1219 40%, #0c0e14 100%);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+#app {
+  min-height: 100vh;
+  position: relative;
+}
+
+/* ============================================
+   3. 动态背景 — 粒子由 ParticleBackground.vue 渲染
+   ============================================ */
+
+/* ============================================
+   4. Page Layout
+   ============================================ */
+
+.page {
+  padding: var(--space-10) 0 var(--space-12);
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   5. Element Plus — Card
+   ============================================ */
+
+.el-card {
+  border: 1px solid var(--color-border) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-sm) !important;
+  background: var(--color-bg-card) !important;
+  backdrop-filter: blur(16px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(140%) !important;
+  color: var(--color-text) !important;
+  transition:
+    border-color var(--duration-normal) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out) !important;
+}
+
+.el-card:hover {
+  border-color: var(--color-border-hover) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+.el-card__header {
+  border-bottom: 1px solid var(--color-divider) !important;
+  padding: var(--space-4) var(--space-6) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  color: var(--color-text-4) !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+}
+
+.el-card__body {
+  padding: var(--space-6) !important;
+}
+
+/* ============================================
+   6. Element Plus — Button
+   ============================================ */
+
+.el-button {
+  font-weight: 500 !important;
+  border-radius: var(--radius-sm) !important;
+  letter-spacing: 0.01em;
+  transition: all var(--duration-normal) var(--ease-out) !important;
+}
+
+.el-button:active {
+  transform: scale(0.97);
+}
+
+/* Primary */
+.el-button--primary {
+  --el-button-bg-color: var(--color-primary) !important;
+  --el-button-border-color: var(--color-primary) !important;
+  --el-button-hover-bg-color: var(--color-primary-hover) !important;
+  --el-button-hover-border-color: var(--color-primary-hover) !important;
+  --el-button-text-color: #fff !important;
+  --el-button-hover-text-color: #fff !important;
+  box-shadow: 0 1px 2px rgba(20, 184, 166, 0.2) !important;
+}
+
+.el-button--primary:hover {
+  box-shadow: 0 4px 12px rgba(20, 184, 166, 0.25) !important;
+}
+
+/* Default */
+.el-button--default {
+  --el-button-bg-color: var(--color-bg-elevated) !important;
+  --el-button-border-color: var(--color-border) !important;
+  --el-button-text-color: var(--color-text-2) !important;
+  --el-button-hover-bg-color: var(--color-bg-hover) !important;
+  --el-button-hover-border-color: var(--color-border-hover) !important;
+  --el-button-hover-text-color: var(--color-text) !important;
+}
+
+/* Danger */
+.el-button--danger {
+  --el-button-bg-color: var(--color-danger) !important;
+  --el-button-border-color: var(--color-danger) !important;
+  --el-button-hover-bg-color: #dc2626 !important;
+  --el-button-hover-border-color: #dc2626 !important;
+  --el-button-text-color: #fff !important;
+  --el-button-hover-text-color: #fff !important;
+}
+
+/* Text */
+.el-button.is-text {
+  --el-button-text-color: var(--color-text-3) !important;
+  --el-button-hover-text-color: var(--color-primary) !important;
+  --el-button-hover-bg-color: var(--color-primary-bg) !important;
+}
+
+/* Sizes */
+.el-button--large {
+  height: 44px !important;
+  font-size: 14px !important;
+  padding: 0 var(--space-6) !important;
+}
+
+.el-button--small {
+  height: 30px !important;
+  font-size: 12px !important;
+  padding: 0 var(--space-3) !important;
+}
+
+/* Round */
+.el-button.is-round {
+  border-radius: var(--radius-full) !important;
+}
+
+/* Loading */
+.el-button.is-loading {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* ============================================
+   7. Element Plus — Input
+   ============================================ */
+
+.el-input__wrapper {
+  background: rgba(24, 24, 27, 0.5) !important;
+  box-shadow: 0 0 0 1px var(--color-border) inset !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 0 var(--space-3) !important;
+  transition: box-shadow var(--duration-normal) var(--ease-out) !important;
+}
+
+.el-input__wrapper:hover {
+  box-shadow: 0 0 0 1px var(--color-border-hover) inset !important;
+}
+
+.el-input__wrapper.is-focus {
+  box-shadow: 0 0 0 1px var(--color-primary) inset, 0 0 0 3px var(--color-primary-glow) inset !important;
+}
+
+.el-input__inner {
+  color: var(--color-text) !important;
+  font-size: 14px !important;
+}
+
+.el-input__inner::placeholder {
+  color: var(--color-text-4) !important;
+}
+
+/* Textarea */
+.el-textarea__inner {
+  background: rgba(24, 24, 27, 0.5) !important;
+  border-color: var(--color-border) !important;
+  color: var(--color-text) !important;
+  border-radius: var(--radius-sm) !important;
+  font-family: var(--font-sans) !important;
+  transition: border-color var(--duration-normal) var(--ease-out) !important;
+}
+
+.el-textarea__inner::placeholder {
+  color: var(--color-text-4) !important;
+}
+
+.el-textarea__inner:focus {
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 3px var(--color-primary-glow) inset !important;
+}
+
+/* ============================================
+   8. Element Plus — Form
+   ============================================ */
+
+.el-form-item__label {
+  font-weight: 500 !important;
+  color: var(--color-text-2) !important;
+  font-size: 13px !important;
+  letter-spacing: 0.02em !important;
+}
+
+.el-form-item {
+  margin-bottom: var(--space-5) !important;
+}
+
+/* ============================================
+   9. Element Plus — Avatar
+   ============================================ */
+
+.el-avatar {
+  background: linear-gradient(135deg, var(--color-primary), #0d9488) !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+  border: 2px solid rgba(255, 255, 255, 0.08) !important;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   10. Element Plus — Alert
+   ============================================ */
+
+.el-alert {
+  border-radius: var(--radius-md) !important;
+  border: 1px solid transparent !important;
+}
+
+.el-alert--error {
+  background: var(--color-danger-bg) !important;
+  border-color: rgba(239, 68, 68, 0.15) !important;
+}
+
+.el-alert--error .el-alert__title {
+  color: #fca5a5 !important;
+}
+
+.el-alert--success {
+  background: rgba(34, 197, 94, 0.08) !important;
+  border-color: rgba(34, 197, 94, 0.15) !important;
+}
+
+.el-alert--success .el-alert__title {
+  color: #86efac !important;
+}
+
+/* ============================================
+   11. Element Plus — Skeleton
+   ============================================ */
+
+.el-skeleton {
+  border-radius: var(--radius-lg) !important;
+  overflow: hidden;
+}
+
+.el-skeleton__item {
+  background: linear-gradient(
+    90deg,
+    var(--color-bg-elevated) 25%,
+    rgba(39, 39, 42, 0.6) 37%,
+    var(--color-bg-elevated) 63%
+  ) !important;
+  background-size: 400% 100% !important;
+  animation: skeleton-shimmer 1.4s ease infinite !important;
+}
+
+@keyframes skeleton-shimmer {
+  0%   { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
+}
+
+/* ============================================
+   12. Element Plus — Empty
+   ============================================ */
+
+.el-empty__description p {
+  color: var(--color-text-4) !important;
+  font-size: 14px !important;
+}
+
+/* ============================================
+   13. Element Plus — Pagination
+   ============================================ */
+
+.el-pagination {
+  --el-pagination-hover-color: var(--color-primary);
+  gap: var(--space-1);
+}
+
+.el-pagination button {
+  background: var(--color-bg-elevated) !important;
+  color: var(--color-text-3) !important;
+  border-radius: var(--radius-sm) !important;
+  border: 1px solid var(--color-border) !important;
+  transition: all var(--duration-normal) var(--ease-out) !important;
+}
+
+.el-pagination button:hover {
+  background: var(--color-bg-hover) !important;
+  color: var(--color-text) !important;
+  border-color: var(--color-border-hover) !important;
+}
+
+.el-pager li {
+  background: var(--color-bg-elevated) !important;
+  color: var(--color-text-3) !important;
+  border-radius: var(--radius-sm) !important;
+  font-weight: 500 !important;
+  min-width: 32px !important;
+  height: 32px !important;
+  line-height: 32px !important;
+  transition: all var(--duration-normal) var(--ease-out) !important;
+}
+
+.el-pager li:hover {
+  color: var(--color-text) !important;
+}
+
+.el-pager li.is-active {
+  background: var(--color-primary) !important;
+  color: #fff !important;
+}
+
+/* ============================================
+   14. Element Plus — Radio Button
+   ============================================ */
+
+.el-radio-button__inner {
+  background: var(--color-bg-elevated) !important;
+  border-color: var(--color-border) !important;
+  color: var(--color-text-3) !important;
+  font-weight: 500 !important;
+  transition: all var(--duration-normal) var(--ease-out) !important;
+}
+
+.el-radio-button__inner:hover {
+  color: var(--color-text) !important;
+}
+
+.el-radio-button__original-radio:checked + .el-radio-button__inner {
+  background: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  color: #fff !important;
+  box-shadow: -1px 0 0 0 var(--color-primary) !important;
+}
+
+/* ============================================
+   15. Element Plus — MessageBox
+   ============================================ */
+
+.el-message-box {
+  background: var(--color-bg-card) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: var(--radius-xl) !important;
+  box-shadow: var(--shadow-xl) !important;
+  backdrop-filter: blur(20px) !important;
+  padding: var(--space-6) !important;
+}
+
+.el-message-box__title {
+  color: var(--color-text) !important;
+  font-weight: 600 !important;
+}
+
+.el-message-box__message {
+  color: var(--color-text-2) !important;
+}
+
+.el-message-box__btns .el-button--primary {
+  border-radius: var(--radius-sm) !important;
+}
+
+/* ============================================
+   16. Element Plus — Message (Toast)
+   ============================================ */
+
+.el-message {
+  border-radius: var(--radius-md) !important;
+  border: 1px solid var(--color-border) !important;
+  background: var(--color-bg-card) !important;
+  backdrop-filter: blur(16px) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+
+.el-message--success .el-message__content {
+  color: var(--color-success) !important;
+}
+
+.el-message--error .el-message__content {
+  color: #fca5a5 !important;
+}
+
+/* ============================================
+   17. Custom Classes — 全局通用
+   ============================================ */
+
+.avatar-gradient {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #fff !important;
+  background: linear-gradient(135deg, var(--color-primary), #0d9488) !important;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.fade-in {}
+
+/* ============================================
+   18. Scrollbar
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* ============================================
+   19. Selection
+   ============================================ */
+
+::selection {
+  background: var(--color-primary-glow);
+  color: var(--color-text);
+}
+
+/* ============================================
+   20. Focus Visible (无障碍)
+   ============================================ */
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.el-button:focus-visible,
+.el-input__wrapper:focus-visible {
+  outline: none;
+}
+
+/* ============================================
+   21. 帖子列表卡片 — NewsCard 专属增强
+   ============================================ */
+
+.news-card {
+  transition:
+    transform var(--duration-normal) var(--ease-out),
+    border-color var(--duration-normal) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out) !important;
+}
+
+.news-card:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: var(--shadow-lg) !important;
+  border-color: var(--color-border-hover) !important;
+}
+
+/* ============================================
+   22. 评论区 — CommentItem 增强
+   ============================================ */
+
+.comment-item {
+  transition: background var(--duration-fast) var(--ease-out);
+}
+
+.comment-item:hover {
+  background: rgba(255, 255, 255, 0.015);
+}
+
+/* ============================================
+   23. 个人中心 — Profile 增强
+   ============================================ */
+
+.profile-stats {
+  position: relative;
+}
+
+.profile-stats::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1px;
+  height: 32px;
+  background: var(--color-border);
+}
+
+/* ============================================
+   24. 关注列表 — Follow Item 增强
+   ============================================ */
+
+.follow-item {
+  transition: background var(--duration-fast) var(--ease-out);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-2) !important;
+  margin: 0 calc(-1 * var(--space-2));
+}
+
+.follow-item:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* ============================================
+   25. 表单页面 — Form Page 增强
+   ============================================ */
+
+.form-card {
+  transition: border-color var(--duration-normal) var(--ease-out) !important;
+}
+
+.form-card:focus-within {
+  border-color: rgba(20, 184, 166, 0.2) !important;
+}
+
+/* ============================================
+   26. 文章详情 — Article 增强
+   ============================================ */
+
+.article-body {
+  font-size: 15.5px;
+  line-height: 1.85;
+  color: var(--color-text-2);
+  letter-spacing: 0.01em;
+}
+
+/* ============================================
+   27. 登录/注册页面 — Auth Page 增强
+   ============================================ */
+
+.login-page,
+.register-page {
+  position: relative;
+  z-index: 1;
+}
+
+.login-card,
+.register-card {
+  transition: border-color var(--duration-normal) var(--ease-out) !important;
+}
+
+.login-card:hover,
+.register-card:hover {
+  border-color: var(--color-border-hover) !important;
+}
+
+/* ============================================
+   28. 链接增强
+   ============================================ */
+
+.form-link,
+.author-link,
+.follow-link,
+.news-author {
+  transition: color var(--duration-fast) var(--ease-out) !important;
+}
+
+.form-link:hover,
+.author-link:hover,
+.follow-link:hover,
+.news-author:hover {
+  color: var(--color-primary-light) !important;
+}
+
+/* ============================================
+   29. 回复区缩进线增强
+   ============================================ */
+
+.comment-replies {
+  border-left-color: rgba(255, 255, 255, 0.06) !important;
+  transition: border-left-color var(--duration-fast) var(--ease-out);
+}
+
+.comment-item:hover > .comment-replies {
+  border-left-color: var(--color-primary-glow) !important;
+}
