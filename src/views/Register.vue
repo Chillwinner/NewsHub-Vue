@@ -2,9 +2,9 @@
   <div class="page register-page">
     <el-card class="register-card">
       <div class="register-header">
-        <div class="register-logo avatar-gradient">A</div>
+        <div class="register-logo avatar-gradient">N</div>
         <h2 class="register-title">创建账号</h2>
-        <p class="register-sub">加入 Pulse 新闻社区</p>
+        <p class="register-sub">加入 NewsHub 新闻社区</p>
       </div>
       <el-form @submit.prevent="handleRegister" label-position="top">
         <el-form-item label="手机号">

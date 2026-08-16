@@ -4,7 +4,7 @@
     <el-container class="app-container">
       <el-header class="app-header" height="64px">
         <div class="header-inner">
-          <router-link to="/" class="logo">Pulse</router-link>
+          <router-link to="/" class="logo">NewsHub</router-link>
           <div class="nav-links">
             <template v-if="userStore.user">
               <router-link to="/news/create">

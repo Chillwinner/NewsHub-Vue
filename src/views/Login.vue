@@ -2,9 +2,9 @@
   <div class="page login-page">
     <el-card class="login-card">
       <div class="login-header">
-        <div class="login-logo avatar-gradient">A</div>
+        <div class="login-logo avatar-gradient">N</div>
         <h2 class="login-title">欢迎回来</h2>
-        <p class="login-sub">登录你的 Pulse 账号</p>
+        <p class="login-sub">登录你的 NewsHub 账号</p>
       </div>
       <el-form @submit.prevent="handleLogin" label-position="top">
         <el-form-item label="手机号">
