@@ -1,4 +1,20 @@
-# NewsHub-Vue — NewsHub 社区前端
+<div align="center">
+  <img src="docs/assets/logo.svg" width="112" alt="NewsHub-Vue">
+  <h1>NewsHub-Vue</h1>
+  <p><strong>NewsHub 社区前端</strong></p>
+  <p>Vue 3 + TypeScript + Vite。注册登录、新闻流、嵌套评论、点赞、关注与个性化 Feed，配合后端 <a href="https://github.com/Chillwinner/NewsHub">NewsHub</a>。</p>
+  <p>
+    <a href="./README.md">简体中文</a> ·
+    <a href="./README_en.md">English</a>
+  </p>
+  <p>
+    <a href="https://github.com/Chillwinner/NewsHub-Vue/stargazers"><img src="https://img.shields.io/github/stars/Chillwinner/NewsHub-Vue?style=flat-square" alt="Stars"></a>
+    <img src="https://img.shields.io/badge/Vue-3-42b883?style=flat-square&logo=vuedotjs&logoColor=white" alt="Vue 3">
+    <img src="https://img.shields.io/badge/TypeScript-5.9-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript">
+    <img src="https://img.shields.io/badge/Vite-7-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite">
+    <a href="https://github.com/Chillwinner/NewsHub"><img src="https://img.shields.io/badge/Backend-NewsHub-0f766e?style=flat-square" alt="NewsHub"></a>
+  </p>
+</div>
 
 > 基于 **Vue 3 + TypeScript + Vite** 的新闻社交前端，配合后端微服务 [NewsHub](https://github.com/Chillwinner/NewsHub) 使用。
 > 覆盖用户注册登录、新闻发布与浏览、嵌套评论、点赞、关注关系与个性化 Feed 流等完整体验。

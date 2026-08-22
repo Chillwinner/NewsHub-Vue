@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="NewsHub Vue">
+  <defs>
+    <linearGradient id="nv-face" x1="16" y1="8" x2="116" y2="122" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#42b883"/>
+      <stop offset="1" stop-color="#2f7f5c"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="30" fill="url(#nv-face)"/>
+  <path fill="#e8f8f0" d="M28 36h24l12 22 12-22h24L64 100 28 36z"/>
+  <path fill="#f3d27a" d="M48 36h16l0 0 0 0L64 62 48 36z"/>
+</svg>
